@@ -260,6 +260,7 @@ class K8sAnsibleMixin(object):
                 else:
                     setattr(configuration, key, value)
 
+        configuration.verify_ssl = False
         kubernetes.client.Configuration.set_default(configuration)
         try:
             return DynamicClient(kubernetes.client.ApiClient(configuration))
